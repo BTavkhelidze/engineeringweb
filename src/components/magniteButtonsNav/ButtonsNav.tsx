@@ -1,5 +1,5 @@
 'use client';
-
+import Link from 'next/link';
 import Framer from './framer';
 import { useState } from 'react';
 
@@ -7,49 +7,58 @@ export default function ButtonNav() {
   const [active, setActive] = useState('');
 
   return (
-    <main className='flex gap-10'>
+    <nav className='flex gap-8'>
       <Framer>
-        <div
-          className=' cursor-pointer relative'
+        <Link
+          href={'/'}
+          className='text-gray-800 text-base font-light tracking-wide 
+            relative hover:text-gray-600 transition-colors duration-300'
           onMouseEnter={() => setActive('home')}
           onMouseLeave={() => setActive('')}
         >
           Home
           {active === 'home' && (
-            <div className='absolute mt-1 w-full flex justify-center'>
-              <div className=' w-2 h-2 rounded-full bg-black '> </div>
-            </div>
+            <span
+              className='absolute -bottom-2 left-1/2 transform -translate-x-1/2 
+              w-1.5 h-1.5 rounded-full bg-gray-600'
+            />
           )}
-        </div>
+        </Link>
       </Framer>
       <Framer>
-        <div
-          className=' cursor-pointer relative'
+        <Link
+          href='/about'
+          className='text-gray-800 text-base font-light tracking-wide 
+            relative hover:text-gray-600 transition-colors duration-300'
           onMouseEnter={() => setActive('about')}
           onMouseLeave={() => setActive('')}
         >
           About
           {active === 'about' && (
-            <div className='absolute mt-1 w-full flex justify-center'>
-              <div className=' w-2 h-2 rounded-full bg-black '> </div>
-            </div>
+            <span
+              className='absolute -bottom-2 left-1/2 transform -translate-x-1/2 
+              w-1.5 h-1.5 rounded-full bg-gray-600'
+            />
           )}
-        </div>
+        </Link>
       </Framer>
       <Framer>
-        <div
-          className=' cursor-pointer relative'
+        <Link
+          href='/services'
+          className='text-gray-800 text-base font-light tracking-wide 
+            relative hover:text-gray-600 transition-colors duration-300'
           onMouseEnter={() => setActive('services')}
           onMouseLeave={() => setActive('')}
         >
           Services
           {active === 'services' && (
-            <div className='absolute mt-1 w-full flex justify-center'>
-              <div className=' w-2 h-2 rounded-full bg-black '> </div>
-            </div>
+            <span
+              className='absolute -bottom-2 left-1/2 transform -translate-x-1/2 
+              w-1.5 h-1.5 rounded-full bg-gray-600'
+            />
           )}
-        </div>
+        </Link>
       </Framer>
-    </main>
+    </nav>
   );
 }

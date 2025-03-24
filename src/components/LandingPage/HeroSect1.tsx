@@ -1,31 +1,10 @@
 'use client';
 import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Framer from '../magniteButtonsNav/framer';
 import { animationDiv } from '@/framer';
 
 export function HeroSec1() {
-  const controls1 = useAnimation();
-  const controls2 = useAnimation();
-
-  // Function to generate random positions
-  const getRandomPosition = () => ({
-    x: Math.floor(Math.random() * 1500) - 250, // Random x between -250 to 250
-    y: Math.floor(Math.random() * 400) - 200, // Random y between -200 to 200
-  });
-
-  useEffect(() => {
-    const moveRandomly = async (controls: any) => {
-      while (true) {
-        await controls.start(getRandomPosition());
-        await new Promise((res) => setTimeout(res, 2000)); // Change position every 2 sec
-      }
-    };
-
-    moveRandomly(controls1);
-    moveRandomly(controls2);
-  }, []);
-
   return (
     <div className='w-full relative h-screen flex justify-center items-center  overflow-hidden'>
       <div className='w-full h-full absolute top-0 left-0 overflow-hidden z-10 '>
