@@ -5,5 +5,15 @@ import Fire from './fire.jpg';
 import FireAlerm from './firealerm.jpg';
 import Heating from './gatboba.jpg';
 import AirVent from './AirVent.jpg';
+import ArrowDown from './arrow-down.svg';
 
-export { AirVent, house2, poster, Dinning, Fire, FireAlerm, Heating };
+export {
+  ArrowDown,
+  AirVent,
+  house2,
+  poster,
+  Dinning,
+  Fire,
+  FireAlerm,
+  Heating,
+};

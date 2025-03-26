@@ -1,26 +1,35 @@
 'use client';
-import Link from 'next/link';
-import Framer from './framer';
+
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+import Framer from './framer';
 
 export default function ButtonNav() {
   const [active, setActive] = useState('');
+  const t = useTranslations('HeaderNav');
 
   return (
-    <nav className='flex gap-8'>
+    <nav className='flex gap-6'>
       <Framer>
         <Link
           href={'/'}
-          className='text-gray-800 text-base font-light tracking-wide 
-            relative hover:text-gray-600 transition-colors duration-300'
+          className={`text-sm font-light tracking-wide relative transition-colors duration-200 ${
+            active === 'home'
+              ? 'text-gray-900 dark:text-white'
+              : 'text-gray-600 dark:text-gray-400'
+          } hover:text-gray-900 dark:hover:text-white`}
           onMouseEnter={() => setActive('home')}
           onMouseLeave={() => setActive('')}
         >
-          Home
+          {t('Home')}
           {active === 'home' && (
             <span
-              className='absolute -bottom-2 left-1/2 transform -translate-x-1/2 
-              w-1.5 h-1.5 rounded-full bg-gray-600'
+              className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full ${
+                active === 'home'
+                  ? 'bg-gray-900 dark:bg-white'
+                  : 'bg-gray-600 dark:bg-gray-400'
+              }`}
             />
           )}
         </Link>
@@ -28,16 +37,22 @@ export default function ButtonNav() {
       <Framer>
         <Link
           href='/about'
-          className='text-gray-800 text-base font-light tracking-wide 
-            relative hover:text-gray-600 transition-colors duration-300'
+          className={`text-sm font-light tracking-wide relative transition-colors duration-200 ${
+            active === 'about'
+              ? 'text-gray-900 dark:text-white'
+              : 'text-gray-600 dark:text-gray-400'
+          } hover:text-gray-900 dark:hover:text-white`}
           onMouseEnter={() => setActive('about')}
           onMouseLeave={() => setActive('')}
         >
-          About
+          {t('About')}
           {active === 'about' && (
             <span
-              className='absolute -bottom-2 left-1/2 transform -translate-x-1/2 
-              w-1.5 h-1.5 rounded-full bg-gray-600'
+              className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full ${
+                active === 'about'
+                  ? 'bg-gray-900 dark:bg-white'
+                  : 'bg-gray-600 dark:bg-gray-400'
+              }`}
             />
           )}
         </Link>
@@ -45,16 +60,22 @@ export default function ButtonNav() {
       <Framer>
         <Link
           href='/services'
-          className='text-gray-800 text-base font-light tracking-wide 
-            relative hover:text-gray-600 transition-colors duration-300'
+          className={`text-sm font-light tracking-wide relative transition-colors duration-200 ${
+            active === 'services'
+              ? 'text-gray-900 dark:text-white'
+              : 'text-gray-600 dark:text-gray-400'
+          } hover:text-gray-900 dark:hover:text-white`}
           onMouseEnter={() => setActive('services')}
           onMouseLeave={() => setActive('')}
         >
-          Services
+          {t('Services')}
           {active === 'services' && (
             <span
-              className='absolute -bottom-2 left-1/2 transform -translate-x-1/2 
-              w-1.5 h-1.5 rounded-full bg-gray-600'
+              className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full ${
+                active === 'services'
+                  ? 'bg-gray-900 dark:bg-white'
+                  : 'bg-gray-600 dark:bg-gray-400'
+              }`}
             />
           )}
         </Link>

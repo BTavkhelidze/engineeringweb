@@ -16,8 +16,10 @@ const projects: IServise[] = [
   { id: 4, title: 'Plumbing', sectionId: 'plumbing' },
   { id: 5, title: 'Electrical', sectionId: 'electrical' },
   { id: 6, title: 'Low Voltage', sectionId: 'low-voltage' },
-  { id: 7, title: 'Schedule Plan', sectionId: 'lighting' },
-  { id: 8, title: 'Cost Estimation', sectionId: 'lighting' },
+  { id: 7, title: 'Lighting', sectionId: 'lighting' },
+  { id: 8, title: 'Bim', sectionId: 'bim' },
+  { id: 9, title: 'Cost', sectionId: 'cost' },
+  { id: 10, title: 'consulting', sectionId: 'consulting' },
 ];
 
 function HeroHeadersec1() {
@@ -26,12 +28,22 @@ function HeroHeadersec1() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition +
+        window.pageYOffset -
+        window.innerHeight / 2 +
+        element.offsetHeight / 2;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
   return (
-    <div className='w-full min-h-screen flex items-center justify-center '>
+    <div className='w-full min-h-screen flex items-center justify-center'>
       <div className='max-w-[1280px] mx-auto w-full px-6 py-16'>
         <motion.div
           variants={animationDiv}

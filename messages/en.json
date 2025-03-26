@@ -1,0 +1,45 @@
+{
+  "HeaderNav": {
+    "Home": "Home",
+    "About": "About Us",
+    "Services": "Services"
+  },
+  "LandingPage": {
+    "Title": "Innovative Engineering Solutions for a Sustainable Future",
+    "BtnTitle": "Explore Our Services"
+  },
+  "Services": {
+    "fls": "Fire and Life Safety (FLS)",
+    "flsDescr": "Fire and life safety systems ensure the protection of people and the safety of buildings. This field includes fire risk assessment, design of fire signaling and extinguishing systems, smoke control strategies, and planning of emergency exits to support safe and efficient evacuation.",
+
+    "Heating": "Heating and Cooling",
+    "HeatingDescr": "Energy-efficient heating and cooling systems optimize the indoor climate and comfort, reducing energy costs and environmental impact. It involves developing heating, air conditioning, and ventilation strategies for residential, commercial, and industrial buildings.",
+
+    "Ventilation": "Air Ventilation",
+    "VentilationDescr": "Proper ventilation systems define air quality, humidity control, and the circulation of fresh air within a building. Effective ventilation ensures compliance with health and safety standards, reduces exposure to polluted air, and improves the indoor microclimate using both natural and mechanical systems.",
+
+    "Water": "Water Supply and Sewage",
+    "WaterDescr": "Efficient water management is essential for hygiene, comfort, and sustainable resource use in buildings. This field combines the proper design of water supply, sewage, and wastewater systems, ensuring continuous and reliable service, compliance with building standards, and optimization of water resources.",
+
+    "Electrical": "Electrical Engineering",
+    "ElectricalDescr": "The reliability and energy efficiency of electrical supply systems determine the functionality and safety of a building. It includes the design of electrical distribution networks, backup power systems, and energy-efficient solutions, ensuring stable energy supply and compliance with electrical safety standards.",
+
+    "LowVoltage": "Low Voltage Systems",
+    "LowVoltageDescr": "Integrated low-voltage systems in modern buildings ensure safety, communication, and automation. It combines security and video surveillance systems, access control, audio-visual technologies, and smart systems, improving building efficiency and functionality.",
+
+    "Lighting": "Lighting Engineering",
+    "LightingDescr": "Proper lighting design determines the comfort, functionality, and energy efficiency of a building. This field includes the use of LED technologies, daylight integration, and smart control systems, reducing energy consumption and creating an aesthetically and functionally harmonious environment.",
+
+    "BIM": "BIM Services",
+    "BIMDescr": "Digital modeling simplifies the coordination of architectural and engineering solutions, reduces errors, and improves project efficiency. BIM technology creates detailed 3D models, assisting in proper project planning, implementation, and resource optimization.",
+
+    "Schedule": "Schedule Management",
+    "ScheduleDescr": "A proper project schedule defines the coordination of work processes, risk assessment, and ensures timely completion. This field integrates deadline optimization, identification of potential delays, and the development of strategies to prevent them, ensuring projects are completed on time and efficiently.",
+
+    "Cost": "Cost Estimation",
+    "CostDescr": "Financial planning for construction and engineering projects is essential for effective budget management. Cost estimation combines the evaluation of materials, labor, energy consumption, and operational expenses, supporting the economic justification of the project and cost optimization.",
+
+    "Consulting": "Engineering Consulting",
+    "ConsultingDescr": "Choosing the right engineering solutions determines the functionality, energy efficiency, and sustainability of a building. Consulting involves assessing design, energy efficiency, regulatory compliance, and the implementation of innovative technologies, ensuring optimal performance and cost-effectiveness of projects."
+  }
+}
