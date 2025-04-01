@@ -11,7 +11,7 @@ const LanguageSwitcher: React.FC = () => {
   const pathname = usePathname();
   const currentLanguage = langMap[params?.locale || 'en'] || 'EN';
   const newLocale = currentLanguage === 'EN' ? 'ka' : 'en';
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const getPathWithLocale = (locale: string): string => {
     if (!pathname || !params?.locale) return '/';
@@ -26,7 +26,7 @@ const LanguageSwitcher: React.FC = () => {
         onMouseLeave={() => setIsOpen(false)}
       >
         <button
-          className={`px-3 py-1.5 w-[48px] text-center rounded-md text-sm font-light transition-colors duration-200 ${
+          className={`cursor-pointer px-3 py-1.5 w-[48px] text-center rounded-md text-sm font-light transition-colors duration-200 ${
             isOpen
               ? 'bg-gray-100 dark:bg-gray-700'
               : 'bg-transparent dark:bg-transparent'
@@ -35,7 +35,7 @@ const LanguageSwitcher: React.FC = () => {
           {currentLanguage}
         </button>
         <div
-          className={`absolute left-0 top-full w-full rounded-md overflow-hidden transition-all duration-200 transform ${
+          className={`absolute -left-12 top-0 w-full rounded-md overflow-hidden transition-all duration-200 transform ${
             isOpen
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 -translate-y-1 pointer-events-none'
