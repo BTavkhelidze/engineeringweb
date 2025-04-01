@@ -23,7 +23,7 @@ function CompanyName() {
           className='justify-self-start font-light  text-2xl'
         >
           {' '}
-          სამშენებლო სამეურნეო კომპანია
+          Water Air Voltage Engeenering Design
         </motion.p>
       </div>
     </section>

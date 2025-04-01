@@ -34,20 +34,20 @@ export default function ButtonNav() {
       </Link>
 
       <Link
-        href='/about'
+        href='/calculator'
         className={`text-sm font-light tracking-wide relative transition-colors duration-200 ${
-          active.includes('about')
+          active.includes('calculator')
             ? 'text-black dark:text-white'
             : 'text-gray-600 dark:text-gray-400'
         } hover:text-gray-900 dark:hover:text-white`}
-        onMouseEnter={() => setActive('about')}
+        onMouseEnter={() => setActive('calculator')}
         onMouseLeave={() => setActive('')}
       >
         {t('About')}
-        {active === 'about' && (
+        {active === 'calculator' && (
           <span
             className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full ${
-              active === 'about'
+              active === 'calculator'
                 ? 'bg-gray-900 dark:bg-white'
                 : 'bg-gray-600 dark:bg-gray-400'
             }`}
