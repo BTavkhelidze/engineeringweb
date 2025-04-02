@@ -13,7 +13,7 @@ function Header() {
         </div>
       </div> */}
       <div className='flex items-center  justify-between max-w-[500px] w-full  py-3 px-5 rounded-[50px] mx-auto border-[2px] border-black bg-white text-white'>
-        <div className='ml-20'>
+        <div className='ml-10'>
           <ButtonNav />
         </div>
         <div className=''>

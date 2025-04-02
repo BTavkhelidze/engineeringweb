@@ -30,11 +30,14 @@ export const calculateVentilation = (
   kitchen: number,
   toilet: number,
   shaxta: number,
-  kitchenEType: string
+  kitchenEType: string,
+  damper: string,
+  shaftVentT: string
 ) => {
   const probAlpaWC = calculateProbAlpaWC(toilet);
   const probAplaKitchen = calculateProbAplaKitchen(kitchen);
 
+  console.log(kitchenEType, 'samzare');
   const QKittchen = kitchenEType.includes('kedeli')
     ? 180 * kitchen * probAplaKitchen
     : 400 * kitchen * probAplaKitchen;
@@ -48,18 +51,29 @@ export const calculateVentilation = (
     };
   }
 
-  const haersatarisSIganeKitchen =
-    (1000 * QKittchen) / (4 * 3.6 * (shaxta - 100));
-  const haersatarisSIganeWC = (1000 * QWC) / (4 * 3.6 * (shaxta - 100));
+  const kitchenNumDamper = damper.startsWith('yes') ? 100 : 300;
+  const WCNumDamper = damper.startsWith('yes') ? 100 : 250;
+  console.log(QKittchen);
 
+  const airVelocity = shaftVentT.startsWith('natural') ? 2 : 6;
+
+  const haersatarisSIganeKitchen =
+    (1000 * QKittchen) / (airVelocity * 3.6 * (shaxta - 100));
+
+  const haersatarisSIganeWC =
+    (1000 * QWC) / (airVelocity * 3.6 * (shaxta - 100));
+
+  console.log(shaxta);
+  console.log(haersatarisSIganeKitchen, 'haersatarti');
+  console.log(haersatarisSIganeWC, 'haersatarti');
   return {
     samzareulosShaxtisSigane:
       haersatarisSIganeKitchen > (shaxta - 100) * 4
         ? 'gazarde shaxtis sigane & saChiroa konsultacia'
-        : 300 + haersatarisSIganeKitchen,
+        : kitchenNumDamper + haersatarisSIganeKitchen,
     WCShaxtisSigane:
       haersatarisSIganeWC > (shaxta - 100) * 4
         ? 'gazarde shaxtis sigane & saChiroa konsultacia'
-        : 200 + haersatarisSIganeWC,
+        : WCNumDamper + haersatarisSIganeWC,
   };
 };

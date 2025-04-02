@@ -1,101 +1,208 @@
 'use client';
 import React, { useState } from 'react';
 import { calculateVentilation } from './calculations';
+import { MultiStepLoader as Loader } from '../ui/multi-step-loader';
+import { IconSquareRoundedX } from '@tabler/icons-react';
 
 function Calculator() {
   const [kitchen, setKitchen] = useState<number | null>(null);
   const [toilet, setToilet] = useState<number | null>(null);
   const [shaxta, setShaxta] = useState<number | null>(null);
   const [kitchenEType, setKitchenEType] = useState<string>('');
-  const [samzareuloGamwovi, setSamzareuloGamwovi] =
-    useState<string>('meqanikuri');
-  const [samzareulosShaxtisSigane, setSamzareulosShaxtisSigane] = useState<
-    number | string
-  >(0);
-  const [WCShaxtisSigane, setWCShaxtisSigane] = useState<number | string>(0);
+  const [damper, setDamper] = useState<string>('yes');
+  const [shaftVentT, setShaftVentT] = useState<string>('meqanikuri');
+  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState<{
+    samzareulosShaxtisSigane: number | string;
+    WCShaxtisSigane: number | string;
+  } | null>(null);
+
+  const loadingStates = [
+    {
+      text: `kitchen: ${kitchen} `,
+    },
+    {
+      text: `toilet: ${toilet} `,
+    },
+    {
+      text: `kitchenEType: ${kitchenEType} `,
+    },
+    {
+      text: `shaxta: ${shaxta} `,
+    },
+    {
+      text: `damper: ${damper} `,
+    },
+    {
+      text: `shaftVentT: ${shaftVentT} `,
+    },
+  ];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setLoading(true);
     if (!toilet || !kitchen || !shaxta) return;
 
-    const results = calculateVentilation(kitchen, toilet, shaxta, kitchenEType);
-    setSamzareulosShaxtisSigane(results.samzareulosShaxtisSigane);
-    setWCShaxtisSigane(results.WCShaxtisSigane);
+    setResults(
+      calculateVentilation(
+        kitchen,
+        toilet,
+        shaxta,
+        kitchenEType,
+        damper,
+        shaftVentT
+      )
+    );
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   };
 
   return (
-    <main className='max-w-[1440px] w-full h-[300vh] mx-auto pt-20'>
-      <h2 className='mb-10'>Calculate</h2>
+    <main className='max-w-md mx-auto p-4'>
+      <h2 className='text-xl font-semibold mb-6 text-gray-800'>
+        Ventilation Calculator
+      </h2>
 
-      <form className='flex flex-col gap-2.5' onSubmit={handleSubmit}>
-        <label htmlFor='kitchen'>რამდენი სამზარეულოა დაერთებული შახტაზე?</label>
-        <input
-          id='kitchen'
-          type='number'
-          value={kitchen || ''}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setKitchen(Number(e.target.value));
-          }}
-          title='kitchen'
-          placeholder='kitchen'
-          className='border border-black'
-        />
+      <form onSubmit={handleSubmit} className='space-y-4'>
+        {/* Input Fields */}
+        {[
+          {
+            id: 'kitchen',
+            label: 'Kitchens connected to shaft',
+            value: kitchen,
+            setter: setKitchen,
+          },
+          {
+            id: 'toilet',
+            label: 'Toilets connected to shaft',
+            value: toilet,
+            setter: setToilet,
+          },
+          {
+            id: 'shaxta',
+            label: 'Shaft width',
+            value: shaxta,
+            setter: setShaxta,
+          },
+        ].map((field) => (
+          <div key={field.id}>
+            <label
+              htmlFor={field.id}
+              className='block text-sm font-medium text-gray-700 mb-1'
+            >
+              {field.label}
+            </label>
+            <input
+              id={field.id}
+              type='number'
+              value={field.value || ''}
+              onChange={(e) => field.setter(Number(e.target.value))}
+              className='w-full p-2 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500'
+              required
+            />
+          </div>
+        ))}
 
-        <label htmlFor='toilet'>რამდენი საპირფარეშოა დაერთებული შახტაზე?</label>
-        <input
-          id='toilet'
-          type='number'
-          value={toilet || ''}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setToilet(Number(e.target.value));
-          }}
-          title='toilet'
-          placeholder='toilet'
-          className='border border-black'
-        />
+        {/* Select Fields */}
+        {[
+          {
+            id: 'kitchenEType',
+            label: 'Kitchen equipment type',
+            value: kitchenEType,
+            setter: setKitchenEType,
+            options: [
+              { value: '', label: 'Select type', disabled: true },
+              { value: 'kedeli', label: 'კედელში (In wall)' },
+              { value: 'hudze', label: 'ჰუდზე (On hood)' },
+            ],
+          },
+          {
+            id: 'damper',
+            label: 'Damper required',
+            value: damper,
+            setter: setDamper,
+            options: [
+              { value: 'yes', label: 'Yes' },
+              { value: 'no', label: 'No' },
+            ],
+          },
+          {
+            id: 'shaftVentT',
+            label: 'Shaft ventilation type',
+            value: shaftVentT,
+            setter: setShaftVentT,
+            options: [
+              { value: 'natural', label: 'Natural' },
+              { value: 'mechanical', label: 'Mechanical' },
+            ],
+          },
+        ].map((field) => (
+          <div key={field.id}>
+            <label
+              htmlFor={field.id}
+              className='block text-sm font-medium text-gray-700 mb-1'
+            >
+              {field.label}
+            </label>
+            <select
+              id={field.id}
+              value={field.value}
+              onChange={(e) => field.setter(e.target.value)}
+              className='w-full p-2 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500'
+            >
+              {field.options.map((opt) => (
+                <option
+                  key={opt.value}
+                  value={opt.value}
+                  disabled={opt.disabled}
+                >
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        ))}
 
-        <label htmlFor='shaxta'>შახტის სიგანე?</label>
-        <input
-          id='shaxta'
-          type='number'
-          value={shaxta || ''}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setShaxta(Number(e.target.value));
-          }}
-          title='Shaxta'
-          placeholder='შახტა'
-          className='border border-black'
-        />
-
-        <label htmlFor='kitchenEType'>სამზარეულოს ტიპი</label>
-        <input
-          id='kitchenEType'
-          value={kitchenEType}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setKitchenEType(e.target.value);
-          }}
-          title='kitchenEType'
-          placeholder='kedelSi Tu hudze'
-          className='border border-black'
-        />
-
-        <button type='submit'>Calculate</button>
+        <button
+          type='submit'
+          className='w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors'
+        >
+          Calculate
+        </button>
       </form>
 
-      <div className='mt-8'>
-        {kitchen && <p>Kitchen count: {kitchen}</p>}
-        {toilet && <p>Toilet count: {toilet}</p>}
-        {shaxta && <p>shaxta sigane: {shaxta}</p>}
-        {kitchenEType && <p>samzareulos tipi: {kitchenEType}</p>}
+      {/* Results */}
 
-        {samzareulosShaxtisSigane !== 0 && (
-          <p>samzareulos shaxtis sigane: {samzareulosShaxtisSigane}</p>
-        )}
-        {WCShaxtisSigane !== 0 && <p>WC shaxtis sigane: {WCShaxtisSigane}</p>}
-        <div> samzareulosShaxtisSigane: {samzareulosShaxtisSigane}</div>
-        <p> WCShaxtisSigane: {WCShaxtisSigane}</p>
-      </div>
+      <Loader loadingStates={loadingStates} loading={loading} duration={500} />
+      {/* {loading && (
+        <button
+          title='button'
+          type='button'
+          className='fixed top-4 right-4 text-black dark:text-white z-[120]'
+          onClick={() => setLoading(false)}
+        >
+          <IconSquareRoundedX className='h-10 w-10' />
+        </button>
+      )} */}
+      {results && !loading && (
+        <div className='mt-8 p-4 bg-gray-50 rounded'>
+          <h3 className='font-medium text-gray-800 mb-2'>Results</h3>
+          <div className='space-y-2'>
+            <p className='text-sm'>
+              Kitchen shaft width:{' '}
+              <span className='font-medium'>
+                {results.samzareulosShaxtisSigane}
+              </span>
+            </p>
+            <p className='text-sm'>
+              Toilet shaft width:{' '}
+              <span className='font-medium'>{results.WCShaxtisSigane}</span>
+            </p>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

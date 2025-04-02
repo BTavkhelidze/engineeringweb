@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <div className='bg-[#f7f5ed] '>
       <CompanyName />
-      <HeroSec1 />
       <WellcomeScrollSect2 />
+      <HeroSec1 />
       <ServicesSect3 />
 
       <p>hello</p>
