@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { calculateVentilation } from './calculations';
 import { MultiStepLoader as Loader } from '../ui/multi-step-loader';
 import { IconSquareRoundedX } from '@tabler/icons-react';
@@ -10,10 +10,11 @@ function Calculator() {
   const [shaxta, setShaxta] = useState<number | null>(null);
   const [kitchenEType, setKitchenEType] = useState<string>('');
   const [damper, setDamper] = useState<string>('yes');
-  const [shaftVentT, setShaftVentT] = useState<string>('meqanikuri');
+  const [shaftVentT, setShaftVentT] = useState<string>('natural');
   const [loading, setLoading] = useState(false);
+  const [splitHaersatari, setSplitHaersatari] = useState<boolean>(false);
   const [results, setResults] = useState<{
-    samzareulosShaxtisSigane: number | string;
+    samzareulosShaxtisSigane: number | string | (string | number)[];
     WCShaxtisSigane: number | string;
   } | null>(null);
 
@@ -37,12 +38,15 @@ function Calculator() {
       text: `shaftVentT: ${shaftVentT} `,
     },
   ];
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  console.log(splitHaersatari, 'splitHaersatari');
+  const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
+    if (e) {
+      e.preventDefault();
+      setSplitHaersatari(false);
+    }
     setLoading(true);
     if (!toilet || !kitchen || !shaxta) return;
-
+    console.log(shaftVentT, 'shaftVentT');
     setResults(
       calculateVentilation(
         kitchen,
@@ -50,7 +54,8 @@ function Calculator() {
         shaxta,
         kitchenEType,
         damper,
-        shaftVentT
+        shaftVentT,
+        splitHaersatari
       )
     );
 
@@ -58,6 +63,12 @@ function Calculator() {
       setLoading(false);
     }, 3000);
   };
+
+  useEffect(() => {
+    if (splitHaersatari) {
+      handleSubmit();
+    }
+  }, [splitHaersatari]);
 
   return (
     <main className='max-w-md mx-auto p-4'>
@@ -197,12 +208,20 @@ function Calculator() {
               </span>
               {typeof results.samzareulosShaxtisSigane !== 'number' && (
                 <>
-                  <p className=' px-6 py-4 text-black  border self-start font-light cursor-pointer bg-blue-400'>
+                  <p
+                    className='px-6 py-4 text-black border self-start font-light cursor-pointer bg-blue-400'
+                    onClick={() => setSplitHaersatari(true)}
+                  >
                     ორი ჰაერსატარი იყოს
                   </p>
                   <div>
-                    <label htmlFor=''>ორი ჰაერსატარი იყოს</label>
-                    <input type='checkbox' title='yes' />
+                    <label htmlFor='splitHaersatari'>ორი ჰაერსატარი იყოს</label>
+                    <input
+                      title='haersataris gayofa'
+                      type='checkbox'
+                      checked={splitHaersatari}
+                      onChange={() => setSplitHaersatari(true)}
+                    />
                   </div>
                 </>
               )}
