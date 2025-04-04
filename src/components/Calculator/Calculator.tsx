@@ -13,9 +13,10 @@ function Calculator() {
   const [shaftVentT, setShaftVentT] = useState<string>('natural');
   const [loading, setLoading] = useState(false);
   const [splitHaersatari, setSplitHaersatari] = useState<boolean>(false);
+  const [splitHaersatariWC, setSplitHaersatariWC] = useState<boolean>(false);
   const [results, setResults] = useState<{
     samzareulosShaxtisSigane: number | string | (string | number)[];
-    WCShaxtisSigane: number | string;
+    WCShaxtisSigane: number | string | (string | number)[];
   } | null>(null);
 
   const loadingStates = [
@@ -66,6 +67,7 @@ function Calculator() {
     if (e) {
       e.preventDefault();
       setSplitHaersatari(false);
+      setSplitHaersatariWC(false);
     }
     setLoading(true);
     if (!toilet || !kitchen || !shaxta) return;
@@ -78,7 +80,8 @@ function Calculator() {
         kitchenEType,
         damper,
         shaftVentT,
-        splitHaersatari
+        splitHaersatari,
+        splitHaersatariWC
       )
     );
 
@@ -91,8 +94,12 @@ function Calculator() {
     if (splitHaersatari) {
       handleSubmit();
     }
-  }, [splitHaersatari]);
-
+    if (splitHaersatariWC) {
+      handleSubmit();
+    }
+  }, [splitHaersatari, splitHaersatariWC]);
+  console.log(results!.samzareulosShaxtisSigane, 'samza');
+  console.log(results!.WCShaxtisSigane, 'sss');
   return (
     <main className='max-w-md mx-auto p-4'>
       <h2 className='text-xl font-semibold mb-6 text-gray-800'>
@@ -227,7 +234,7 @@ function Calculator() {
             <p className='text-sm'>
               Kitchen shaft width:{' '}
               <span className='font-medium'>
-                {results.samzareulosShaxtisSigane}
+                {customRound(Number(results.samzareulosShaxtisSigane))}
               </span>
               {typeof results.samzareulosShaxtisSigane !== 'number' && (
                 <>
@@ -253,8 +260,21 @@ function Calculator() {
             <p className='text-sm'>
               WC duct size: {shaxta! - 100} :{' '}
               <span className='font-medium'>
-                {customRound(Number(results.WCShaxtisSigane))}
+                {customRound(Number(results.WCShaxtisSigane[0]))}
               </span>
+              {typeof results.WCShaxtisSigane !== 'number' && (
+                <>
+                  <div>
+                    <label htmlFor='splitHaersatari'>ორი ჰაერსატარი იყოს</label>
+                    <input
+                      title='haersataris gayofa'
+                      type='checkbox'
+                      checked={splitHaersatariWC}
+                      onChange={() => setSplitHaersatariWC(true)}
+                    />
+                  </div>
+                </>
+              )}
             </p>
           </div>
         </div>

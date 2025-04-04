@@ -33,17 +33,23 @@ export const calculateVentilation = (
   kitchenEType: string,
   damper: string,
   shaftVentT: string,
-  splitHaersatari?: boolean
+  splitHaersatari?: boolean,
+  splitHaersatariWC?: boolean
 ) => {
   const probAlpaWC = calculateProbAlpaWC(toilet);
   const probAplaKitchen = calculateProbAplaKitchen(kitchen);
-  console.log(splitHaersatari, 'split');
 
   const dct1 = kitchen % 2 === 0 ? kitchen / 2 : kitchen / 2 + 0.5;
   const dct2 = kitchen % 2 === 0 ? kitchen / 2 : kitchen / 2 - 0.5;
 
+  const dct1WC = toilet % 2 === 0 ? toilet / 2 : toilet / 2 + 0.5;
+  const dct2WC = toilet % 2 === 0 ? toilet / 2 : toilet / 2 - 0.5;
+
   const probAplaKitchendct1 = calculateProbAplaKitchen(dct1);
   const probAplaKitchendct2 = calculateProbAplaKitchen(dct2);
+
+  const probAplaKitchendct1WC = calculateProbAplaKitchen(dct1WC);
+  const probAplaKitchendct2WC = calculateProbAplaKitchen(dct2WC);
 
   const QKittchen = kitchenEType.includes('kedeli')
     ? 180 * kitchen * probAplaKitchen
@@ -58,6 +64,10 @@ export const calculateVentilation = (
     : 400 * dct2 * probAplaKitchendct2;
 
   const QWC = 80 * toilet * probAlpaWC;
+  const QWC1Dct = 80 * dct1WC * probAplaKitchendct1WC;
+  const QWC2Dct = 80 * dct2WC * probAplaKitchendct2WC;
+  console.log(QWC1Dct, 'split');
+  console.log(QWC2Dct, 'split');
 
   if (shaxta <= 100) {
     return {
@@ -70,8 +80,7 @@ export const calculateVentilation = (
   const WCNumDamper = damper.startsWith('yes') ? 100 : 250;
 
   const airVelocity = shaftVentT.startsWith('natural') ? 2 : 6;
-  console.log(airVelocity, 'airVelocity');
-  // const QKittchen
+
   const haersatarisSIganeKitchenDct1 =
     (1000 * QKittchen1Dct) / (airVelocity * 3.6 * (shaxta - 100));
   const haersatarisSIganeKitchenDct2 =
@@ -82,7 +91,10 @@ export const calculateVentilation = (
 
   const haersatarisSIganeWC =
     (1000 * QWC) / (airVelocity * 3.6 * (shaxta - 100));
-  console.log(haersatarisSIganeWC, 'haersatarisSIganeWC');
+  const haersatarisSIganeWC1Dct =
+    (1000 * QWC1Dct) / (airVelocity * 3.6 * (shaxta - 100));
+  const haersatarisSIganeWC2Dct =
+    (1000 * QWC2Dct) / (airVelocity * 3.6 * (shaxta - 100));
 
   if (splitHaersatari) {
     return {
@@ -98,6 +110,22 @@ export const calculateVentilation = (
         haersatarisSIganeWC > (shaxta - 100) * 4
           ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
           : haersatarisSIganeWC,
+    };
+  }
+  if (splitHaersatariWC) {
+    return {
+      samzareulosShaxtisSigane:
+        haersatarisSIganeKitchen > (shaxta - 100) * 4
+          ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
+          : haersatarisSIganeKitchen,
+      WCShaxtisSigane: [
+        haersatarisSIganeWC1Dct > (shaxta - 100) * 4
+          ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
+          : haersatarisSIganeWC1Dct,
+        haersatarisSIganeWC2Dct > (shaxta - 100) * 4
+          ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
+          : haersatarisSIganeWC2Dct,
+      ],
     };
   }
 
