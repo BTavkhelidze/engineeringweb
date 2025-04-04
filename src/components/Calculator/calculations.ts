@@ -69,11 +69,11 @@ export const calculateVentilation = (
   return {
     samzareulosShaxtisSigane:
       haersatarisSIganeKitchen > (shaxta - 100) * 4
-        ? 'gazarde shaxtis sigane & saChiroa konsultacia'
+        ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
         : kitchenNumDamper + haersatarisSIganeKitchen,
     WCShaxtisSigane:
       haersatarisSIganeWC > (shaxta - 100) * 4
-        ? 'gazarde shaxtis sigane & saChiroa konsultacia'
+        ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
         : WCNumDamper + haersatarisSIganeWC,
   };
 };

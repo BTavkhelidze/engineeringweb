@@ -195,7 +195,19 @@ function Calculator() {
               <span className='font-medium'>
                 {results.samzareulosShaxtisSigane}
               </span>
+              {typeof results.samzareulosShaxtisSigane !== 'number' && (
+                <>
+                  <p className=' px-6 py-4 text-black  border self-start font-light cursor-pointer bg-blue-400'>
+                    ორი ჰაერსატარი იყოს
+                  </p>
+                  <div>
+                    <label htmlFor=''>ორი ჰაერსატარი იყოს</label>
+                    <input type='checkbox' title='yes' />
+                  </div>
+                </>
+              )}
             </p>
+
             <p className='text-sm'>
               Toilet shaft width:{' '}
               <span className='font-medium'>{results.WCShaxtisSigane}</span>
