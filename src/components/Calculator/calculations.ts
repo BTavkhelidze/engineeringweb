@@ -82,21 +82,22 @@ export const calculateVentilation = (
 
   const haersatarisSIganeWC =
     (1000 * QWC) / (airVelocity * 3.6 * (shaxta - 100));
+  console.log(haersatarisSIganeWC, 'haersatarisSIganeWC');
 
   if (splitHaersatari) {
     return {
       samzareulosShaxtisSigane: [
         haersatarisSIganeKitchenDct1 > (shaxta - 100) * 4
           ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
-          : kitchenNumDamper + haersatarisSIganeKitchenDct1,
+          : haersatarisSIganeKitchenDct1,
         haersatarisSIganeKitchenDct2 > (shaxta - 100) * 4
           ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
-          : kitchenNumDamper + haersatarisSIganeKitchenDct2,
+          : haersatarisSIganeKitchenDct2,
       ],
       WCShaxtisSigane:
         haersatarisSIganeWC > (shaxta - 100) * 4
           ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
-          : WCNumDamper + haersatarisSIganeWC,
+          : haersatarisSIganeWC,
     };
   }
 
@@ -104,10 +105,10 @@ export const calculateVentilation = (
     samzareulosShaxtisSigane:
       haersatarisSIganeKitchen > (shaxta - 100) * 4
         ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
-        : kitchenNumDamper + haersatarisSIganeKitchen,
+        : haersatarisSIganeKitchen,
     WCShaxtisSigane:
       haersatarisSIganeWC > (shaxta - 100) * 4
         ? 'მოცემული პარამეტრებით სტანდარტული შახტის ჩასმა შეუძლებელია და მერე ორი ვარიანტი აქვს გავზარდოთ შახტის სიგანე ან ჩავსვათ ორი ჰაერსატარი'
-        : WCNumDamper + haersatarisSIganeWC,
+        : haersatarisSIganeWC,
   };
 };

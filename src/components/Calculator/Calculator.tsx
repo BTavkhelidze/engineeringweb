@@ -38,7 +38,30 @@ function Calculator() {
       text: `shaftVentT: ${shaftVentT} `,
     },
   ];
-  console.log(splitHaersatari, 'splitHaersatari');
+
+  function customRound(value: number): number {
+    if (value <= 75) return 50;
+    if (value <= 115) return 100;
+    if (value <= 165) return 150;
+    if (value <= 215) return 200;
+    if (value <= 265) return 250;
+    if (value <= 315) return 300;
+    if (value <= 365) return 350;
+    if (value <= 415) return 400;
+    if (value <= 465) return 450;
+    if (value <= 515) return 500;
+    if (value <= 565) return 550;
+    if (value <= 615) return 600;
+    if (value <= 665) return 650;
+    if (value <= 715) return 700;
+    if (value <= 765) return 750;
+    if (value <= 815) return 800;
+    if (value <= 865) return 850;
+    if (value <= 915) return 900;
+    if (value <= 965) return 950;
+    return 1000; // For 966–1000
+  }
+
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     if (e) {
       e.preventDefault();
@@ -46,7 +69,7 @@ function Calculator() {
     }
     setLoading(true);
     if (!toilet || !kitchen || !shaxta) return;
-    console.log(shaftVentT, 'shaftVentT');
+
     setResults(
       calculateVentilation(
         kitchen,
@@ -228,8 +251,10 @@ function Calculator() {
             </p>
 
             <p className='text-sm'>
-              Toilet shaft width:{' '}
-              <span className='font-medium'>{results.WCShaxtisSigane}</span>
+              WC duct size: {shaxta! - 100} :{' '}
+              <span className='font-medium'>
+                {customRound(Number(results.WCShaxtisSigane))}
+              </span>
             </p>
           </div>
         </div>
