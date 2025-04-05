@@ -20,27 +20,27 @@ function Calculator() {
   } | null>(null);
 
   const loadingStates = [
-    {
-      text: `kitchen: ${kitchen} `,
-    },
-    {
-      text: `toilet: ${toilet} `,
-    },
-    {
-      text: `kitchenEType: ${kitchenEType} `,
-    },
-    {
-      text: `shaxta: ${shaxta} `,
-    },
-    {
-      text: `damper: ${damper} `,
-    },
-    {
-      text: `shaftVentT: ${shaftVentT} `,
-    },
+    { text: `kitchen: ${kitchen} ` },
+    { text: `toilet: ${toilet} ` },
+    { text: `kitchenEType: ${kitchenEType} ` },
+    { text: `shaxta: ${shaxta} ` },
+    { text: `damper: ${damper} ` },
+    { text: `shaftVentT: ${shaftVentT} ` },
   ];
 
-  function customRound(value: number): number {
+  function customRound(
+    value: number | string | (number | string)[] | undefined
+  ): number | string | number[] {
+    if (value === undefined) return '-';
+    if (typeof value === 'string') return value;
+    if (Array.isArray(value)) {
+      return value.map((v) => (typeof v === 'number' ? roundNumber(v) : v));
+    }
+    return roundNumber(value);
+  }
+
+  function roundNumber(value: number): number {
+    console.log(value, 'value');
     if (value <= 75) return 50;
     if (value <= 115) return 100;
     if (value <= 165) return 150;
@@ -60,8 +60,18 @@ function Calculator() {
     if (value <= 865) return 850;
     if (value <= 915) return 900;
     if (value <= 965) return 950;
-    return 1000; // For 966–1000
+    return 1000;
   }
+
+  // ფუნქცია, რომელიც ამოწმებს, არის თუ არა მნიშვნელობა მასივი და შეიცავს მხოლოდ რიცხვებს.
+  function isArrayOfNumbers(value: any): boolean {
+    return Array.isArray(value) && value.every((v) => typeof v === 'number');
+  }
+
+  // შემოწმება: თუ შედეგი არ არის რიცხვი და არა მასივი მხოლოდ რიცხვებისგან,
+  // ჩვენ აჩვენებთ ჩექბოქსს.
+  const shouldShowCheckbox = (value: any): boolean =>
+    !(typeof value === 'number' || isArrayOfNumbers(value));
 
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     if (e) {
@@ -98,8 +108,16 @@ function Calculator() {
       handleSubmit();
     }
   }, [splitHaersatari, splitHaersatariWC]);
-  console.log(results!.samzareulosShaxtisSigane, 'samza');
-  console.log(results!.WCShaxtisSigane, 'sss');
+
+  console.log(
+    'samzareulosShaxtisSigane type:',
+    typeof results?.samzareulosShaxtisSigane
+  );
+  console.log(
+    'isArrayOfNumbers:',
+    isArrayOfNumbers(results?.samzareulosShaxtisSigane)
+  );
+
   return (
     <main className='max-w-md mx-auto p-4'>
       <h2 className='text-xl font-semibold mb-6 text-gray-800'>
@@ -215,7 +233,6 @@ function Calculator() {
       </form>
 
       {/* Results */}
-
       <Loader loadingStates={loadingStates} loading={loading} duration={500} />
       {/* {loading && (
         <button
@@ -231,12 +248,12 @@ function Calculator() {
         <div className='mt-8 p-4 bg-gray-50 rounded'>
           <h3 className='font-medium text-gray-800 mb-2'>Results</h3>
           <div className='space-y-2'>
-            <p className='text-sm'>
+            <div className='text-sm'>
               Kitchen shaft width:{' '}
               <span className='font-medium'>
-                {customRound(Number(results.samzareulosShaxtisSigane))}
+                {customRound(results.samzareulosShaxtisSigane)}
               </span>
-              {typeof results.samzareulosShaxtisSigane !== 'number' && (
+              {shouldShowCheckbox(results.samzareulosShaxtisSigane) && (
                 <>
                   <p
                     className='px-6 py-4 text-black border self-start font-light cursor-pointer bg-blue-400'
@@ -255,14 +272,18 @@ function Calculator() {
                   </div>
                 </>
               )}
-            </p>
+            </div>
 
-            <p className='text-sm'>
-              WC duct size: {shaxta! - 100} :{' '}
-              <span className='font-medium'>
-                {customRound(Number(results.WCShaxtisSigane[0]))}
-              </span>
-              {typeof results.WCShaxtisSigane !== 'number' && (
+            <div className='text-sm'>
+              {typeof results.WCShaxtisSigane === 'number' && (
+                <>
+                  <span>WC duct size: {shaxta! - 100} : </span>
+                  <span className='font-medium'>
+                    {customRound(results.WCShaxtisSigane)}
+                  </span>
+                </>
+              )}
+              {shouldShowCheckbox(results.WCShaxtisSigane) && (
                 <>
                   <div>
                     <label htmlFor='splitHaersatari'>ორი ჰაერსატარი იყოს</label>
@@ -275,7 +296,7 @@ function Calculator() {
                   </div>
                 </>
               )}
-            </p>
+            </div>
           </div>
         </div>
       )}
