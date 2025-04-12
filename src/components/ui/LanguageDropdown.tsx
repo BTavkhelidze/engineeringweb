@@ -11,7 +11,7 @@ const LanguageSwitcher: React.FC = () => {
   const pathname = usePathname();
   const currentLanguage = langMap[params?.locale || 'en'] || 'EN';
   const newLocale = currentLanguage === 'EN' ? 'ka' : 'en';
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const getPathWithLocale = (locale: string): string => {
     if (!pathname || !params?.locale) return '/';

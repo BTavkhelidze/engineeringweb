@@ -29,7 +29,7 @@ function Calculator() {
   ];
 
   function customRound(
-    value: number | string | (number | string)[] | undefined
+    value: number | string | number[] | undefined
   ): number | string | number[] {
     if (value === undefined) return '-';
     if (typeof value === 'string') return value;
@@ -63,13 +63,12 @@ function Calculator() {
     return 1000;
   }
 
-  // ფუნქცია, რომელიც ამოწმებს, არის თუ არა მნიშვნელობა მასივი და შეიცავს მხოლოდ რიცხვებს.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function isArrayOfNumbers(value: any): boolean {
     return Array.isArray(value) && value.every((v) => typeof v === 'number');
   }
 
-  // შემოწმება: თუ შედეგი არ არის რიცხვი და არა მასივი მხოლოდ რიცხვებისგან,
-  // ჩვენ აჩვენებთ ჩექბოქსს.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const shouldShowCheckbox = (value: any): boolean =>
     !(typeof value === 'number' || isArrayOfNumbers(value));
 

@@ -4,15 +4,9 @@ import LanguageDropdown from '../ui/LanguageDropdown';
 
 function Header() {
   return (
-    <header className='fixed  z-50  bottom-10 w-full flex items-center justify-center '>
-      {/* <div className='max-w-[1440px] mx-auto w-full flex items-center justify-between px-6 py-4'>
-        <h1 className='text-xl font-light text-gray-800 tracking-wide cursor-default'>
-          Company Name
-        </h1>
-        <div className='flex items-center justify-center gap-20'>
-        </div>
-      </div> */}
-      <div className='flex items-center  justify-between max-w-[500px] w-full  py-3 px-5 rounded-[50px] mx-auto border-[2px] border-black bg-white text-white'>
+    <header className='fixed  z-50  top-10 w-full flex items-center justify-center '>
+      <div className='relative flex items-center  justify-between max-w-[800px] w-full  py-3 px-5 rounded-[250px] mx-auto   text-white '>
+        <div className='absolute w-full h-full opacity-90  bg-[#0D1113]  backdrop-blur-sm rounded-[250px]'></div>
         <div className='ml-10'>
           <ButtonNav />
         </div>

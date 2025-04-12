@@ -1,10 +1,11 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import Framer from '../magniteButtonsNav/framer';
+
 import { animationDiv } from '@/framer';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+
+import Button from '../Button/Button';
 
 export function HeroSec1() {
   const t = useTranslations('LandingPage');
@@ -24,17 +25,13 @@ export function HeroSec1() {
         variants={animationDiv}
         initial='initial'
         animate='animate'
-        className='z-20 mt-[100px] max-w-[1440px] mx-auto w-full  px-[30px] flex flex-col items-start justify-end gap-10'
+        className='z-20 mt-[100px] max-w-[1280px] mx-auto w-full  px-[30px] flex flex-col items-start justify-end gap-10'
       >
-        <p className='text-4xl  font-normal text-neutral-300 dark:text-neutral-400'>
-          {t('Title')}
-        </p>
-        <div className={`w-[340px] h-[60px] `}>
-          <Framer>
-            <div className='text-base rounded-[38px] font-normal px-[10px] py-[16px] cursor-pointer bg-[#e43071] hover:bg-[#be285e] text-[#ffffff] text-center flex items-center justify-center gap-[10px]'>
-              {t('BtnTitle')}
-            </div>
-          </Framer>
+        <h3 className='text-2xl  font-medium text-white '>{t('Title')}</h3>
+        <div className={` text-white bg-black rounded-4xl   flex items-center`}>
+          <Button>
+            <p className='z-20 text-sm font-normal'> {t('BtnTitle')}</p>
+          </Button>
         </div>
       </motion.div>
     </div>

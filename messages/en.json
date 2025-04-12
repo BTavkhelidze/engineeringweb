@@ -4,6 +4,9 @@
     "About": "About Us",
     "Services": "Services"
   },
+  "AboutUsHero": {
+    "title": "Building the Future with Engineering Excellence"
+  },
   "LandingPage": {
     "Title": "Innovative Engineering Solutions for a Sustainable Future",
     "BtnTitle": "Explore Our Services"

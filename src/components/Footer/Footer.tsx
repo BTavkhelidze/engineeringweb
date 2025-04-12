@@ -7,11 +7,8 @@ import Button from '../Button/Button';
 
 function Footer() {
   return (
-    <div
-      className='relative h-[400px]'
-      style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
-    >
-      <div className='fixed bottom-0 h-[400px] w-full bg-[#45444f] text-white'>
+    <div className='relative h-[400px]'>
+      <div className='h-full w-full bg-[#45444f] text-white'>
         <div className='max-w-[1440px] w-full mx-auto flex flex-col pt-[50px] justify-between px-[30px] h-full'>
           <div className='flex flex-wrap justify-between mb-[60px]'>
             <div className='flex flex-col gap-3 justify-between '>
