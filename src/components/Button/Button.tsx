@@ -57,7 +57,7 @@ const Button: React.FC<ButtonProps> = ({
     <div
       onMouseEnter={manageMouseEnter}
       onMouseLeave={manageMouseLeave}
-      className='border relative rounded-4xl font-medium border-gray-400 self-center  cursor-pointer flex items-center justify-center px-[60px] py-[16px] overflow-hidden'
+      className='border relative rounded-4xl font-medium border-gray-400 self-center  cursor-pointer flex items-center justify-center px-[60px] py-[20px] overflow-hidden'
       {...attributes}
       style={{ backgroundColor: mainBackgroundColor }}
     >

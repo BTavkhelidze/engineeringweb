@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import '../globals.css';
 import Header from '@/components/Header/Header';
@@ -7,13 +7,9 @@ import Footer from '@/components/Footer/Footer';
 import { routing } from '@/i18n/routing';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const geistSans = Poppins({
+  variable: '--font-poppins',
+  weight: ['400', '600', '700'],
   subsets: ['latin'],
 });
 
@@ -36,9 +32,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable}  antialiased bg-[#0B1012]`}>
         <NextIntlClientProvider>
           <Header />
           {children}

@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { useParams, usePathname } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const langMap: Record<string, 'GEO' | 'EN'> = { ka: 'GEO', en: 'EN' };
@@ -9,13 +8,19 @@ const langMap: Record<string, 'GEO' | 'EN'> = { ka: 'GEO', en: 'EN' };
 const LanguageSwitcher: React.FC = () => {
   const params = useParams<{ locale?: string }>();
   const pathname = usePathname();
+  const router = useRouter();
   const currentLanguage = langMap[params?.locale || 'en'] || 'EN';
   const newLocale = currentLanguage === 'EN' ? 'ka' : 'en';
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const getPathWithLocale = (locale: string): string => {
     if (!pathname || !params?.locale) return '/';
     return `/${locale}${pathname.slice(3)}`;
+  };
+
+  const handleLanguageChange = () => {
+    setIsOpen(false);
+    router.push(getPathWithLocale(newLocale));
   };
 
   return (
@@ -31,6 +36,7 @@ const LanguageSwitcher: React.FC = () => {
               ? 'bg-gray-100 dark:bg-gray-700'
               : 'bg-transparent dark:bg-transparent'
           } text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700`}
+          onClick={() => setIsOpen(!isOpen)}
         >
           {currentLanguage}
         </button>
@@ -41,13 +47,12 @@ const LanguageSwitcher: React.FC = () => {
               : 'opacity-0 -translate-y-1 pointer-events-none'
           } bg-white dark:bg-gray-800 z-50 border border-gray-200 dark:border-gray-700`}
         >
-          <Link href={getPathWithLocale(newLocale)}>
-            <p
-              className={`px-3 py-1.5 text-sm font-light text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200`}
-            >
-              {newLocale === 'en' ? 'EN' : 'GEO'}
-            </p>
-          </Link>
+          <button
+            onClick={handleLanguageChange}
+            className={`w-full px-3 py-1.5 text-sm font-light text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200`}
+          >
+            {newLocale === 'en' ? 'EN' : 'GEO'}
+          </button>
         </div>
       </div>
     </div>
