@@ -76,8 +76,8 @@ export const calculateVentilation = (
     };
   }
 
-  const kitchenNumDamper = damper.startsWith('yes') ? 100 : 300;
-  const WCNumDamper = damper.startsWith('yes') ? 100 : 250;
+  // const kitchenNumDamper = damper.startsWith('yes') ? 100 : 300;
+  // const WCNumDamper = damper.startsWith('yes') ? 100 : 250;
 
   const airVelocity = shaftVentT.startsWith('natural') ? 2 : 6;
 

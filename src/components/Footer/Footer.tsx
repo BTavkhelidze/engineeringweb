@@ -2,17 +2,17 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { motion } from 'framer-motion';
+
 import Button from '../Button/Button';
 
 function Footer() {
   return (
     <div className='relative h-[400px]'>
       <div className='h-full w-full bg-[#45444f] text-white'>
-        <div className='max-w-[1440px] w-full mx-auto flex flex-col pt-[50px] justify-between px-[30px] h-full'>
+        <div className='max-w-[1280px] w-full mx-auto flex flex-col pt-[50px] justify-between px-6 h-full'>
           <div className='flex flex-wrap justify-between mb-[60px]'>
             <div className='flex flex-col gap-3 justify-between '>
-              <h2 className='text-xl font-semibold'>[Your Company Name]</h2>
+              <h2 className='text-xl font-semibold'>[Company Logo]</h2>
               <div className='mt-4'>
                 <ul className='mt-2 space-y-1 flex gap-4'>
                   <li>
@@ -20,24 +20,15 @@ function Footer() {
                       Home
                     </Link>
                   </li>
-                  <li>
-                    <Link href='/about' className='hover:underline'>
-                      About Us
-                    </Link>
-                  </li>
+
                   <li>
                     <Link href='/services' className='hover:underline'>
                       Services
                     </Link>
                   </li>
                   <li>
-                    <Link href='/projects' className='hover:underline'>
-                      Projects
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href='/contact' className='hover:underline'>
-                      Contact
+                    <Link href='/services' className='hover:underline'>
+                      Calculator
                     </Link>
                   </li>
                 </ul>

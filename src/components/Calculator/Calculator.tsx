@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 import React, { useEffect, useState } from 'react';
 import { calculateVentilation } from './calculations';
 import { MultiStepLoader as Loader } from '../ui/multi-step-loader';
-import { IconSquareRoundedX } from '@tabler/icons-react';
+// import { IconSquareRoundedX } from '@tabler/icons-react';
 
 function Calculator() {
   const [kitchen, setKitchen] = useState<number | null>(null);
@@ -15,7 +16,7 @@ function Calculator() {
   const [splitHaersatari, setSplitHaersatari] = useState<boolean>(false);
   const [splitHaersatariWC, setSplitHaersatariWC] = useState<boolean>(false);
   const [results, setResults] = useState<{
-    samzareulosShaxtisSigane: number | string | (string | number)[];
+    samzareulosShaxtisSigane: string | number | (string | number)[];
     WCShaxtisSigane: number | string | (string | number)[];
   } | null>(null);
 
@@ -29,8 +30,8 @@ function Calculator() {
   ];
 
   function customRound(
-    value: number | string | number[] | undefined
-  ): number | string | number[] {
+    value: string | number | (string | number)[] | undefined
+  ) {
     if (value === undefined) return '-';
     if (typeof value === 'string') return value;
     if (Array.isArray(value)) {

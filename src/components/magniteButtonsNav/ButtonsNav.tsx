@@ -47,7 +47,7 @@ export default function ButtonNav() {
           {t('About')}
           {active === 'calculator' && (
             <span
-              className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full ${
+              className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full mt-2 ${
                 active === 'calculator'
                   ? 'bg-gray-900 dark:bg-white'
                   : 'bg-gray-600 dark:bg-gray-400'
@@ -67,7 +67,7 @@ export default function ButtonNav() {
           {t('Services')}
           {active === 'services' && (
             <span
-              className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full ${
+              className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full mt-2 ${
                 active === 'services'
                   ? 'bg-gray-900 dark:bg-white'
                   : 'bg-gray-600 dark:bg-gray-400 '

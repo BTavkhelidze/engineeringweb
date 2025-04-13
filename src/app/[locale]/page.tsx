@@ -1,6 +1,8 @@
 import CompanyName from '@/components/LandingPage/companyName';
 import { HeroSec1 } from '@/components/LandingPage/HeroSect1';
-import HeroSwiper from '@/components/LandingPage/HeroSwiper/HeroSwiper';
+
+import SingleService from '@/components/LandingPage/HeroSwiper/SingleService';
+import VentilationCalculatorHero from '@/components/LandingPage/VentilationCalculatorHero';
 import { WellcomeScrollSect2 } from '@/components/LandingPage/WellcomeScrollSect2';
 
 export default function Home() {
@@ -11,7 +13,9 @@ export default function Home() {
         <WellcomeScrollSect2 />
       </div>
       <HeroSec1 />
-      <HeroSwiper />
+      <SingleService />
+      <VentilationCalculatorHero />
+      {/* <HeroSwiper /> */}
       {/* <ServicesSect3 /> */}
     </div>
   );
