@@ -4,14 +4,14 @@ import LanguageDropdown from '../ui/LanguageDropdown';
 
 function Header() {
   return (
-    <header className='fixed  z-50  top-10 w-full flex items-center justify-center '>
-      <div className='relative  max-w-[1000px] w-full   rounded-[250px] mx-auto   text-white border border-neutral-500'>
-        <div className='absolute w-full h-full opacity-90  bg-[#0D1113]  rounded-[250px]'></div>
+    <header className='fixed  z-50   w-full flex items-center justify-center bg-[#45444F]'>
+      <div className='relative  max-w-[1000px] w-full   rounded-[250px] mx-auto      text-white '>
         <div className='flex items-center  justify-between  py-3 px-5'>
           <div className=''>
-            <ButtonNav />
+            <p>Logo</p>
           </div>
-          <div className=''>
+          <div className='flex gap-10 items-center'>
+            <ButtonNav />
             <LanguageDropdown />
           </div>
         </div>

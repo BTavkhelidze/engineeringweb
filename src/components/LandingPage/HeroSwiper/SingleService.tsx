@@ -33,7 +33,7 @@ function SingleService() {
           return (
             <div key={i} className='flex items-center justify-center'>
               <motion.div
-                className='relative w-[240px] h-[180px] cursor-pointer border border-[#18181B] bg-[#0C1013] rounded-[8px] overflow-hidden flex items-center justify-center'
+                className='relative w-[240px] h-[180px] cursor-pointer border border-[#18181B]  rounded-[8px] overflow-hidden flex items-center justify-center'
                 whileHover={{
                   scale: [null, 1.04],
                   transition: {

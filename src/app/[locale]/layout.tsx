@@ -32,7 +32,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${geistSans.variable}  antialiased bg-[#0B1012]`}>
+      <body className={`${geistSans.variable}  antialiased bg-[#f7f5ed]`}>
         <NextIntlClientProvider>
           <Header />
           {children}

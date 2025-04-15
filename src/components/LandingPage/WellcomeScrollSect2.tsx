@@ -39,7 +39,7 @@ export function WellcomeScrollSect2() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <motion.div className='flex-1' variants={itemVariants}>
-        <h2 className='text-3xl md:text-4xl font-light tracking-wide text-gray-800 dark:text-white leading-tight'>
+        <h2 className='text-3xl md:text-4xl font-light tracking-wide text-gray-800  leading-tight'>
           <TextGenerateEffect words={words} duration={1.2} />
         </h2>
       </motion.div>

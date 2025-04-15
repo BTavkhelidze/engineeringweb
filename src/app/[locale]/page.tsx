@@ -12,7 +12,7 @@ export default function Home() {
       <div className='mb-10'>
         <WellcomeScrollSect2 />
       </div>
-      <HeroSec1 />
+      {/* <HeroSec1 /> */}
       <SingleService />
       <VentilationCalculatorHero />
       {/* <HeroSwiper /> */}
