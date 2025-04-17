@@ -7,9 +7,10 @@ import { WellcomeScrollSect2 } from '@/components/LandingPage/WellcomeScrollSect
 
 export default function Home() {
   return (
-    <div className=' '>
-      <CompanyName />
-      <div className='mb-10'>
+    <main>
+      <div className='xl:h-screen max-h-[850px] flex flex-col'>
+        <CompanyName />
+
         <WellcomeScrollSect2 />
       </div>
       <HeroSec1 />
@@ -17,6 +18,6 @@ export default function Home() {
       <VentilationCalculatorHero />
       {/* <HeroSwiper /> */}
       {/* <ServicesSect3 /> */}
-    </div>
+    </main>
   );
 }

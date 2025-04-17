@@ -26,14 +26,18 @@ function SingleService() {
     },
   ];
   return (
-    <div className='w-full  max-w-[1280px] mx-auto my-6 px-6'>
-      <h2 className='text-white '>Services</h2>
-      <div className='flex  gap-4 mt-4'>
+    <div
+      className='w-full  max-w-[1280px] mx-auto my-6 px-6 lg:mx-6
+xl:mx-10 
+2xl:mx-auto '
+    >
+      <h2 className='text-white text-center sm:text-start'>Services</h2>
+      <div className='flex  gap-4 mt-4 xl:flex-nowrap flex-wrap justify-center sm:justify-start'>
         {services.map((ser, i) => {
           return (
             <div key={i} className='flex items-center justify-center'>
               <motion.div
-                className='relative w-[240px] h-[180px] cursor-pointer border border-[#18181B] bg-[#0C1013] rounded-[8px] overflow-hidden flex items-center justify-center'
+                className='relative w-[240px] h-[180px] cursor-pointer border border-[#18181B] bg-[#0C1013] rounded-[8px] overflow-hidden flex items-center justify-center '
                 whileHover={{
                   scale: [null, 1.04],
                   transition: {
@@ -47,7 +51,6 @@ function SingleService() {
                   ease: 'easeOut',
                 }}
               >
-                {/* <Image src={ser.icon} alt={ser.title} /> */}
                 {ser.icon}
                 <div className='absolute w-full h-[35px] flex items-center bg-[#18181B] text-white bottom-0 text-start px-2'>
                   {ser.title}

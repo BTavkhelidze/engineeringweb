@@ -5,16 +5,17 @@ import { animationDiv } from '@/framer';
 import { Spotlight } from '../ui/spotlight';
 
 import '@/app/globals.css';
+import { usePathname } from 'next/navigation';
 
 function CompanyName() {
+  const pathName = usePathname();
+  console.log(pathName);
+
   return (
-    <section className='w-full h-[550px] mb-10  '>
-      <div className='relative max-w-[1280px] mx-auto gap-6 flex flex-col items-center justify-center h-full '>
+    <section className='w-full  flex-1   pt-0 '>
+      <div className='relative max-w-[1280px] pt-10 mx-auto gap-6 flex flex-col  items-center justify-center h-full '>
         <div className=' w-full  z-10 h-full absolute'>
-          <Spotlight
-            className='-top-40 left-0 md:-top-20 md:left-60'
-            fill='white'
-          />
+          <Spotlight className=' left-0 xl:-top-20 md:left-60' fill='white' />
         </div>
         <motion.h1
           initial='initial'
