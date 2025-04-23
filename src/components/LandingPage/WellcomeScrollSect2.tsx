@@ -3,8 +3,9 @@
 import { motion } from 'framer-motion';
 import { TextGenerateEffect } from '../ui/text-generate-effect';
 import { useTranslations } from 'next-intl';
+import { FaAngleDown } from 'react-icons/fa';
 
-// Animation variants for the heading and paragraph
+// Animation variants
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -23,16 +24,16 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    // transition: { delay: 1.2, ease: 'easeOut' },
   },
 };
 
 export function WellcomeScrollSect2() {
   const t = useTranslations('AboutUsHero');
   const words = `${t('title')}`;
+
   return (
     <motion.div
-      className='max-w-[1280px] mx-auto flex flex-col md:flex-row items-center px-6 pt-20 pb-16 gap-8 '
+      className='relative max-w-[1280px]  mx-auto flex  flex-col md:flex-row items-center px-6  gap-8   flex-1'
       variants={containerVariants}
       initial='hidden'
       whileInView='visible'
@@ -45,12 +46,12 @@ export function WellcomeScrollSect2() {
       </motion.div>
 
       <motion.div
-        className='flex-1  flex justify-center'
+        className='flex-1 flex justify-center'
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1.6 }}
       >
-        <p className='text-gray-600 dark:text-gray-400 text-base leading-relaxed max-w-md '>
+        <p className='text-gray-600 dark:text-gray-400 text-base leading-relaxed max-w-md'>
           From <span className='font-medium'>structural engineering</span> to{' '}
           <span className='font-medium'>project management</span>, we ensure{' '}
           <span className='text-blue-500 dark:text-blue-400'>precision</span>,{' '}
@@ -63,6 +64,15 @@ export function WellcomeScrollSect2() {
           optimizing infrastructure, or driving technological advancements,
           we’re here to engineer a better tomorrow.
         </p>
+      </motion.div>
+
+      {/* Scroll Down Icon */}
+      <motion.div
+        className='absolute bottom-8 left-1/2 transform -translate-x-1/2'
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 1.5 }}
+      >
+        <FaAngleDown className='text-2xl text-gray-500 dark:text-gray-300 drop-shadow-lg animate-pulse' />
       </motion.div>
     </motion.div>
   );

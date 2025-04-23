@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import '../globals.css';
-import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
+
 import { routing } from '@/i18n/routing';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import LayoutClientSide from './LayoutClientSide';
+import LayoutClientSideFooter from './LayoutClientSideFooter';
 
 const geistSans = Poppins({
   variable: '--font-poppins',
@@ -26,6 +27,7 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -34,9 +36,11 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable}  antialiased bg-[#0B1012]`}>
         <NextIntlClientProvider>
-          <Header />
-          {children}
-          <Footer />
+          <main className='flex flex-col  justify-between xl:h-screen'>
+            <LayoutClientSide />
+            {children}
+            <LayoutClientSideFooter />
+          </main>
         </NextIntlClientProvider>
       </body>
     </html>
