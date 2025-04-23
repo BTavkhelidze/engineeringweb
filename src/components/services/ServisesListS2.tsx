@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import {
@@ -15,7 +15,7 @@ import {
   FaMoneyCheckAlt,
   FaUserTie,
 } from 'react-icons/fa';
-import SingleService from './SingleService';
+
 import Link from 'next/link';
 import { TextGenerateEffect } from '../ui/text-generate-effect';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import React, { JSX, useEffect, useState } from 'react';
+import React, { JSX, useEffect, useMemo, useState } from 'react';
 import {
   FaAngleLeft,
   FaAngleRight,
@@ -36,75 +36,78 @@ function SingleService({ service }: SingleServiceProps) {
   const [isHover, setIsHover] = useState<boolean>(false);
   const t = useTranslations('Services');
 
-  const services: ServiceItem[] = [
-    {
-      id: 'fire-safety',
-      title: t('fls'),
-      description: t('flsDescr'),
-      icon: <FaFireExtinguisher className='text-red-500 text-3xl' />,
-    },
-    {
-      id: 'heating-cooling',
-      title: t('Heating'),
-      description: t('HeatingDescr'),
-      icon: <FaSnowflake className='text-blue-400 text-3xl' />,
-    },
-    {
-      id: 'air-ventilation',
-      title: t('Ventilation'),
-      description: t('VentilationDescr'),
-      icon: <FaWind className='text-cyan-400 text-3xl' />,
-    },
-    {
-      id: 'plumbing',
-      title: t('Water'),
-      description: t('WaterDescr'),
-      icon: <FaFaucet className='text-blue-600 text-3xl' />,
-    },
-    {
-      id: 'electrical',
-      title: t('Electrical'),
-      description: t('ElectricalDescr'),
-      icon: <FaBolt className='text-yellow-400 text-3xl' />,
-    },
-    {
-      id: 'low-voltage',
-      title: t('LowVoltage'),
-      description: t('LowVoltageDescr'),
-      icon: <FaNetworkWired className='text-purple-400 text-3xl' />,
-    },
-    {
-      id: 'lighting',
-      title: t('Lighting'),
-      description: t('LightingDescr'),
-      icon: <FaLightbulb className='text-amber-300 text-3xl' />,
-    },
-    {
-      id: 'bim',
-      title: t('BIM'),
-      description: t('BIMDescr'),
-      icon: <FaCubes className='text-indigo-500 text-3xl' />,
-    },
-    {
-      id: 'cost',
-      title: t('Cost'),
-      description: t('CostDescr'),
-      icon: <FaMoneyCheckAlt className='text-green-500 text-3xl' />,
-    },
-    {
-      id: 'consulting',
-      title: t('Consulting'),
-      description: t('ConsultingDescr'),
-      icon: <FaUserTie className='text-sky-500 text-3xl' />,
-    },
-  ];
+  const services: ServiceItem[] = useMemo(
+    () => [
+      {
+        id: 'fire-safety',
+        title: t('fls'),
+        description: t('flsDescr'),
+        icon: <FaFireExtinguisher className='text-red-500 text-3xl' />,
+      },
+      {
+        id: 'heating-cooling',
+        title: t('Heating'),
+        description: t('HeatingDescr'),
+        icon: <FaSnowflake className='text-blue-400 text-3xl' />,
+      },
+      {
+        id: 'air-ventilation',
+        title: t('Ventilation'),
+        description: t('VentilationDescr'),
+        icon: <FaWind className='text-cyan-400 text-3xl' />,
+      },
+      {
+        id: 'plumbing',
+        title: t('Water'),
+        description: t('WaterDescr'),
+        icon: <FaFaucet className='text-blue-600 text-3xl' />,
+      },
+      {
+        id: 'electrical',
+        title: t('Electrical'),
+        description: t('ElectricalDescr'),
+        icon: <FaBolt className='text-yellow-400 text-3xl' />,
+      },
+      {
+        id: 'low-voltage',
+        title: t('LowVoltage'),
+        description: t('LowVoltageDescr'),
+        icon: <FaNetworkWired className='text-purple-400 text-3xl' />,
+      },
+      {
+        id: 'lighting',
+        title: t('Lighting'),
+        description: t('LightingDescr'),
+        icon: <FaLightbulb className='text-amber-300 text-3xl' />,
+      },
+      {
+        id: 'bim',
+        title: t('BIM'),
+        description: t('BIMDescr'),
+        icon: <FaCubes className='text-indigo-500 text-3xl' />,
+      },
+      {
+        id: 'cost',
+        title: t('Cost'),
+        description: t('CostDescr'),
+        icon: <FaMoneyCheckAlt className='text-green-500 text-3xl' />,
+      },
+      {
+        id: 'consulting',
+        title: t('Consulting'),
+        description: t('ConsultingDescr'),
+        icon: <FaUserTie className='text-sky-500 text-3xl' />,
+      },
+    ],
+    [t]
+  );
 
   useEffect(() => {
     const index = services.findIndex((el) => el.id === service);
     if (index !== -1) {
       setCurIndex(index);
     }
-  }, [service]);
+  }, [service, services]);
   if (curIndex === null) return <p>...loading</p>;
   const currentService = services[curIndex];
 
