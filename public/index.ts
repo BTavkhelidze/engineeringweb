@@ -7,6 +7,7 @@ import Heating from './gatboba.jpg';
 import AirVent from './AirVent.jpg';
 import ArrowDown from './arrow-down.svg';
 import Calculator from './calculator.svg';
+import Logo from './logo-16k.svg';
 
 export {
   ArrowDown,
@@ -18,4 +19,5 @@ export {
   FireAlerm,
   Heating,
   Calculator,
+  Logo,
 };

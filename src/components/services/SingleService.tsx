@@ -110,13 +110,13 @@ function SingleService({ service }: SingleServiceProps) {
 
   const handlePrev = () => {
     if (curIndex > 0) {
-      setCurIndex((prev) => prev - 1);
+      setCurIndex((prev) => prev! - 1);
     }
   };
 
   const handleNext = () => {
     if (curIndex < services.length - 1) {
-      setCurIndex((prev) => prev + 1);
+      setCurIndex((prev) => prev! + 1);
     }
   };
 
@@ -138,8 +138,11 @@ function SingleService({ service }: SingleServiceProps) {
         </motion.span>
       </Link>
 
-      <section className='relative w-full flex-1 flex flex-col items-center  text-center px-4'>
-        <div key={currentService.id}>
+      <section className='relative w-full flex-1 flex flex-col items-center  text-center px-4  justify-center'>
+        <div
+          key={currentService.id}
+          className='flex flex-col gap-10 max-w-[70%]'
+        >
           <div className='mb-4'>{currentService.icon}</div>
           <h2 className='text-3xl font-bold mb-2'>{currentService.title}</h2>
           <p>{currentService.description}</p>

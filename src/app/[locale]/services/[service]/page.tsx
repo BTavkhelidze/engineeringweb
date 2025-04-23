@@ -7,7 +7,7 @@ async function page({ params }: { params: Promise<{ service: string }> }) {
   const { service } = await params;
 
   return (
-    <main className='text-white w-full bg-green-400'>
+    <main className='text-white w-full '>
       <SingleService service={service} />
     </main>
   );

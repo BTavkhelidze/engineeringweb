@@ -41,7 +41,7 @@ const LanguageSwitcher: React.FC = () => {
           {currentLanguage}
         </button>
         <div
-          className={`absolute -left-12 top-0 w-full rounded-md overflow-hidden transition-all duration-200 transform ${
+          className={`absolute -bottom-8  w-full rounded-md overflow-hidden transition-all duration-200 transform ${
             isOpen
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 -translate-y-1 pointer-events-none'
@@ -49,7 +49,7 @@ const LanguageSwitcher: React.FC = () => {
         >
           <button
             onClick={handleLanguageChange}
-            className={`w-full px-3 py-1.5 text-sm font-light text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200`}
+            className={`w-full px-3 py-1.5 text-sm font-light text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 cursor-pointer`}
           >
             {newLocale === 'en' ? 'EN' : 'GEO'}
           </button>
