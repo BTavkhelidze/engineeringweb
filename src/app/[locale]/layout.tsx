@@ -36,7 +36,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable}  antialiased bg-[#0B1012]`}>
         <NextIntlClientProvider>
-          <main className='flex flex-col  justify-between xl:h-screen'>
+          <main className='flex flex-col  justify-between '>
             <LayoutClientSide />
             {children}
             <LayoutClientSideFooter />
