@@ -6,14 +6,15 @@ import React from 'react';
 
 function page() {
   return (
-    <div className='relative flex-1   w-full  items-center justify-center flex flex-col pt-30    pb-[50px]'>
+    <main className='relative flex-1   w-full  items-center justify-center flex flex-col md:pt-30 -pt-30    pb-[50px]'>
       <div className='w-full ' id='top'></div>
-
-      <CompanyName />
-      <div className='my-20'>
+      <div className='w-full  '>
+        <CompanyName />
+      </div>
+      <div className='my-20 w-full'>
         <ServisesListS2 />
       </div>
-    </div>
+    </main>
   );
 }
 

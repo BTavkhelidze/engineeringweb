@@ -11,7 +11,10 @@ function CompanyName() {
     <section className='w-full  flex-1   pt-0 '>
       <div className='relative max-w-[1280px] pt-50 mx-auto gap-6 flex flex-col  items-center justify-center h-full '>
         <div className=' w-full  z-10 h-full absolute'>
-          <Spotlight className=' left-0 xl:-top-20 md:left-60' fill='white' />
+          <Spotlight
+            className='left-10 w-full sm:left-20 -top-10 xl:-top-20 md:left-60'
+            fill='white'
+          />
         </div>
         <motion.h1
           initial='initial'

@@ -88,10 +88,10 @@ function ServisesListS2() {
   ];
 
   return (
-    <section className='w-full relative'>
+    <section className='flex-1 w-full relative '>
       <div className=' max-w-[1280px] mx-auto w-full px-6 '>
         <motion.div
-          className='flex-1'
+          className='flex-1 text-white text-center sm:text-start'
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >
@@ -99,15 +99,15 @@ function ServisesListS2() {
             <TextGenerateEffect words={words} duration={1.2} />
           </h2>
         </motion.div>
-        <div className='flex  gap-2 mt-4 flex-wrap justify-center lg:justify-start'>
+        <ul className='flex justify-stretch  w-full gap-2  mt-4 flex-col sm:flex-row  flex-wrap sm:justify-start'>
           {services.map((ser, index) => (
-            <section
-              key={index}
-              className='flex items-center justify-center mt-10'
-            >
-              <Link href={`/services/${ser.id}`}>
+            <li key={index} className='flex  mt-4 sm:mt-10'>
+              <Link
+                href={`/services/${ser.id}`}
+                className='relative w-full sm:w-[230px]'
+              >
                 <motion.div
-                  className='relative w-[240px] h-[180px] cursor-pointer border border-[#18181B] bg-[#0C1013] rounded-[8px] overflow-hidden flex items-center justify-center flex-col gap-4'
+                  className='relative w-full h-[180px] cursor-pointer border border-[#18181B] bg-[#0C1013] rounded-[8px] overflow-hidden flex items-center justify-center'
                   whileHover={{
                     scale: [null, 1.04],
                     transition: {
@@ -127,9 +127,9 @@ function ServisesListS2() {
                   </div>
                 </motion.div>
               </Link>
-            </section>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
