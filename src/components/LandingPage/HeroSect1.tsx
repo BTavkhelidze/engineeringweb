@@ -10,7 +10,7 @@ import Button from '../Button/Button';
 export function HeroSec1() {
   const t = useTranslations('LandingPage');
   return (
-    <div className='w-full relative h-screen max-h-[850px] flex justify-center items-center  overflow-hidden '>
+    <div className='w-full relative h-full xl:min-h-[100dvh] flex justify-center items-center  overflow-hidden '>
       <div className='w-full h-full absolute top-0 left-0 overflow-hidden z-10 '>
         <video
           className='w-full object-cover h-full'

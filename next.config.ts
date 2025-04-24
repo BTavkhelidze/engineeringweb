@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
       'i.pinimg.com',
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/ka/home',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();
