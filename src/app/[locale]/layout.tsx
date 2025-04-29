@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import LayoutClientSide from './LayoutClientSide';
 import LayoutClientSideFooter from './LayoutClientSideFooter';
+import MotionInViewSection from '@/components/ui/MotionInViewSectionProps';
 
 const geistSans = Poppins({
   variable: '--font-poppins',
@@ -39,6 +40,7 @@ export default async function RootLayout({
           <main className='flex flex-col  justify-between '>
             <LayoutClientSide />
             {children}
+
             <LayoutClientSideFooter />
           </main>
         </NextIntlClientProvider>
