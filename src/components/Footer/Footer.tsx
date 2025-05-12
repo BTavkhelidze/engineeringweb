@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import React from 'react';
 import Button from '../Button/Button';
+import { BackgroundLines } from '../ui/background-lines';
 
 function Footer() {
   return (
-    <footer className='relative z-50 bg-[#45444f]  text-white'>
-      <div className='max-w-[1280px] w-full mx-auto px-6 py-12 flex flex-col'>
+    <footer className='relative z-50  text-white'>
+      <div className='max-w-[1280px] w-full mx-auto px-6 py-12 flex flex-col relative'>
         <div className='flex flex-col items-center md:items-start md:flex-row flex-wrap justify-between  md:gap-4 gap-8 lg:gap-8 mb-12'>
           <div className='flex flex-col gap-4'>
             <h2 className='text-xl font-semibold text-center md:text-start '>
@@ -48,7 +49,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className='flex flex-col sm:flex-row justify-between items-center border-t border-gray-600 pt-6 text-sm gap-4'>
+        <div className='flex flex-col sm:flex-row justify-between items-center border-t border-dotted border-gray-600 pt-6 text-sm gap-4'>
           <p className='text-center sm:text-start'>
             ©2025 WAVE. All rights reserved.
           </p>

@@ -7,7 +7,10 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 
+import { useRouter } from 'next/navigation';
+
 function VentilationCalculatorHero() {
+  const router = useRouter();
   const [isHover, setIsHover] = useState<boolean>(false);
   return (
     <section className='w-full max-w-[1280px] flex  mx-auto my-16 px-6  xl:px-10 2xl:mx-auto xl:pb-10 flex-col sm:flex-row items-center gap-10'>
@@ -18,7 +21,8 @@ function VentilationCalculatorHero() {
           Enter your room dimensions and air change rate to get accurate
           ventilation estimates.
         </p>
-        <p
+        <button
+          onClick={() => router.push('/calculator')}
           className='text-white mt-6 text-sm flex gap-2 cursor-pointer items-center  justify-center sm:justify-start'
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
@@ -32,7 +36,7 @@ function VentilationCalculatorHero() {
           >
             <ChevronRight />
           </motion.span>
-        </p>
+        </button>
       </div>
 
       <div className='flex-1 flex justify-end '>

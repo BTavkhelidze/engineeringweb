@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaTools, FaCheckCircle, FaClock, FaUsers } from 'react-icons/fa';
 import { ChevronRight } from 'lucide-react';
-import MotionInViewSection from '../ui/MotionInViewSectionProps';
+import Link from 'next/link';
 
 function WhyChooseUs() {
   const [isHover, setIsHover] = useState(false);
@@ -58,7 +58,8 @@ function WhyChooseUs() {
         ))}
       </ul>
 
-      <p
+      <Link
+        href={'/aboutUs'}
         className='text-white mt-6 text-sm flex gap-2 cursor-pointer items-center justify-center sm:justify-start '
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
@@ -71,7 +72,7 @@ function WhyChooseUs() {
         >
           <ChevronRight />
         </motion.span>
-      </p>
+      </Link>
     </section>
   );
 }

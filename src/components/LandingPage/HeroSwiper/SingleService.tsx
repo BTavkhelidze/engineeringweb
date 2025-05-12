@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaFireAlt, FaSnowflake, FaFan, FaBolt, FaTools } from 'react-icons/fa';
 import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 function SingleService() {
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -60,7 +61,8 @@ xl:px-10
           );
         })}
       </ul>
-      <p
+      <Link
+        href={'/services'}
         className='text-white mt-6 text-sm flex gap-2 cursor-pointer items-center justify-center sm:justify-start '
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
@@ -74,7 +76,7 @@ xl:px-10
         >
           <ChevronRight />
         </motion.span>
-      </p>
+      </Link>
     </div>
   );
 }
