@@ -5,8 +5,10 @@
     "Services": "Services"
   },
   "AboutUsHero": {
-    "title": "Building the Future with Engineering Excellence"
+    "title": "Building the Future with Engineering Excellence",
+    "EngineeringText": "From structural engineering to project management, we ensure precision, sustainability, and efficiency in every project. Whether it's designing resilient buildings, optimizing infrastructure, or driving technological advancements, we're here to engineer a better tomorrow."
   },
+
   "LandingPage": {
     "Title": "Innovative Engineering Solutions for a Sustainable Future",
     "BtnTitle": "Explore Our Services"

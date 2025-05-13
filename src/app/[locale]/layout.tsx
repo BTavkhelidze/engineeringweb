@@ -39,6 +39,7 @@ export default async function RootLayout({
           <main className='flex flex-col  justify-between '>
             <LayoutClientSide />
             {children}
+
             <LayoutClientSideFooter />
           </main>
         </NextIntlClientProvider>

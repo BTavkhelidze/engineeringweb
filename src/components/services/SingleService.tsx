@@ -124,7 +124,7 @@ function SingleService({ service }: SingleServiceProps) {
   };
 
   return (
-    <div className='max-w-[1280px] mx-auto pt-10 flex flex-col h-screen'>
+    <main className='max-w-[1280px] mx-auto pt-10 flex flex-col h-screen'>
       <Link
         href='/services'
         className='flex gap-2 items-center'
@@ -179,7 +179,7 @@ function SingleService({ service }: SingleServiceProps) {
           )}
         </div>
       </section>
-    </div>
+    </main>
   );
 }
 

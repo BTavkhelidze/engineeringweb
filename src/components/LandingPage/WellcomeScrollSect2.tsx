@@ -72,17 +72,7 @@ export function WellcomeScrollSect2() {
         transition={{ duration: 1, delay: 1.6 }}
       >
         <p className='text-gray-600 dark:text-gray-400 lg:text-base text-sm text-center md:text-start leading-relaxed max-w-md'>
-          From <span className='font-medium'>structural engineering</span> to{' '}
-          <span className='font-medium'>project management</span>, we ensure{' '}
-          <span className='text-blue-500 dark:text-blue-400'>precision</span>,{' '}
-          <span className='text-blue-500 dark:text-blue-400'>
-            sustainability
-          </span>
-          , and{' '}
-          <span className='text-blue-500 dark:text-blue-400'>efficiency</span>{' '}
-          in every project. Whether it’s designing resilient buildings,
-          optimizing infrastructure, or driving technological advancements,
-          we’re here to engineer a better tomorrow.
+          {t('EngineeringText')}
         </p>
       </motion.div>
     </motion.div>
