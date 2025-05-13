@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import React from 'react';
 import Button from '../Button/Button';
-import { BackgroundLines } from '../ui/background-lines';
 
 function Footer() {
   return (
